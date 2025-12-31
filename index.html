@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<!--
+  ═══════════════════════════════════════════════════════════
+  EVOLVECODE / ЭВОЛЮЦИЯ КОДА
+  ═══════════════════════════════════════════════════════════
+  Author: https://t.me/Elena_evolvecode
+  Telegram: @na_sh_kodila
+  Created: 2025
+  License: All rights reserved
+  ═══════════════════════════════════════════════════════════
+-->
+
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЭВОЛЮЦИЯ КОДА - Инструменты управления состоянием</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #0d0d12; 
+            --card-bg: rgba(35, 35, 45, 0.4); 
+            --text-main: #ffffff;
+            --text-soft: #e2e2e9;
+            --text-dim: #9494a3;
+            --accent: #c084fc;
+            --gradient: linear-gradient(135deg, #9333ea 0%, #c084fc 100%);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        #stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at center, #161625 0%, #0d0d12 100%);
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 0.7; transform: scale(1.2); }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 25px;
+            position: relative;
+        }
+
+        header {
+            padding: 100px 0 60px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+            background: linear-gradient(to bottom, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 80px;
+        }
+
+        .app-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            padding: 50px 35px;
+            border-radius: 24px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.4s ease;
+        }
+
+        .app-card:hover {
+            border-color: rgba(192, 132, 252, 0.4);
+            transform: translateY(-5px);
+            background: rgba(45, 45, 60, 0.5);
+        }
+
+        .app-card h2 { font-size: 1.6rem; margin-bottom: 10px; font-weight: 700; letter-spacing: 1px; }
+        .app-subtitle { color: var(--accent); font-size: 0.85rem; margin-bottom: 20px; font-weight: 600; text-transform: uppercase; }
+        .app-card p { color: var(--text-soft); font-size: 0.95rem; margin-bottom: 35px; flex-grow: 1; }
+
+        .btn {
+            display: inline-block;
+            width: 220px; 
+            padding: 16px 0;
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--accent);
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: var(--gradient);
+            border-color: transparent;
+            box-shadow: 0 10px 20px rgba(147, 51, 234, 0.3);
+            transform: scale(1.03);
+        }
+
+        .questions-section {
+            padding-bottom: 80px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        .question-pair {
+            margin-bottom: 20px;
+            background: var(--card-bg);
+            backdrop-filter: blur(5px);
+            padding: 35px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: default;
+        }
+
+        .question-pair:hover {
+            transform: scale(1.02);
+            background: rgba(50, 50, 70, 0.4);
+            border-color: rgba(192, 132, 252, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .question-text {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .answer-text {
+            font-size: 1rem;
+            color: var(--text-soft);
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .ethics { padding: 80px 0 20px; text-align: center; }
+        .ethics-features { display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; margin-bottom: 30px;}
+        .ethics-item span { font-size: 1.5rem; display: block; margin-bottom: 10px; }
+        .ethics-item p { font-size: 0.85rem; color: var(--text-dim); font-weight: 500; }
+
+        .author-link {
+            text-align: center;
+            padding-bottom: 60px;
+        }
+
+        .author-link a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-family: 'Space Mono', monospace;
+            border-bottom: 1px dashed #444;
+            transition: all 0.3s;
+        }
+
+        .author-link a:hover {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        footer { padding: 40px 0; text-align: center; color: #444; font-size: 0.75rem; border-top: 1px solid var(--border); }
+
+        @media (max-width: 768px) {
+            .apps-grid { grid-template-columns: 1fr; }
+            .btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="stars-container"></div>
+
+<div class="container">
+    
+    <header>
+        <h1 class="mono">ЭВОЛЮЦИЯ КОДА</h1>
+        <p class="tagline">Бесплатные приложения для выхода из режима стресса.</p>
+    </header>
+
+    <section class="apps-section">
+        <div class="apps-grid">
+            <article class="app-card">
+                <h2 class="mono">ТОЧКА</h2>
+                <div class="app-subtitle">Контроль внимания</div>
+                <p>
+                    Хватит позволять мыслям управлять вами. Практика помогает вернуть «руль» управления вниманием, чтобы вы сами решали, где находиться вашему сознанию.
+                </p>
+                <a href="https://kvantonika.ru/tochka" class="btn">ПОДРОБНЕЕ</a>
+            </article>
+
+            <article class="app-card">
+                <h2 class="mono">ДЫХАНИЕ ТИШИНЫ</h2>
+                <div class="app-subtitle">Биологический баланс</div>
+                <p>
+                    Прямой способ выключить стрессовый режим. Визуальный ритм помогает нервной системе вспомнить состояние покоя, возвращая телу опору и ясность.
+                </p>
+                <a href="https://kvantonika.ru/moment" class="btn">ПОДРОБНЕЕ</a>
+            </article>
+        </div>
+    </section>
+
+    <section class="questions-section">
+        <h2 class="section-title mono">Как это работает на деле?</h2>
+        
+        <div class="question-pair">
+            <div class="question-text">Как перестать бесконечно накручивать себя?</div>
+            <div class="answer-text">
+                Постоянная «мыслекрутка» - это автоматизм мозга, который изматывает и сжигает ресурсы. Решение не в борьбе с мыслями, а в навыке вовремя замечать момент «отлёта» в фантазии. Инструмент «Точка» тренирует способность мгновенно возвращаться к фактам реальности.
+            </div>
+        </div>
+
+        <div class="question-pair">
+            <div class="question-text">Почему я не могу долго удерживать фокус?</div>
+            <div class="answer-text">
+                Внимание - это мышца, ослабленная цифровым шумом и фоновой тревогой. Когда фокус рассыпается, вы теряете управление своей жизнью. "Точка" - метод восстановления тонуса внимания через простую и честную фиксацию отвлечений.
+            </div>
+        </div>
+
+        <div class="question-pair">
+            <div class="question-text">Как снять напряжение, которое стало привычным?</div>
+            <div class="answer-text">
+                Когда стресс «давит на плечи», убеждения и усилия больше не работают. Нужно действовать через биологию. Управляемый ритм дыхания в «Дыхании Тишины» - это физиологический стоп-кран, который принудительно переводит организм из режима выживания в режим покоя.
+            </div>
+        </div>
+
+        <div class="question-pair">
+            <div class="question-text">Откуда берется усталость без видимых причин?</div>
+            <div class="answer-text">
+                Больше всего энергии потребляют невидимые внутренние споры и догадки о будущем. Это пустая трата сил. Остановив этот процесс, вы обнаружите колоссальный объем ресурса, который раньше просто уходил в пустоту.
+            </div>
+        </div>
+    </section>
+
+    <section class="ethics">
+        <div class="ethics-features">
+            <div class="ethics-item"><span>🚫</span><p>БЕЗ РЕКЛАМЫ</p></div>
+            <div class="ethics-item"><span>🔒</span><p>БЕЗ РЕГИСТРАЦИИ</p></div>
+            <div class="ethics-item"><span>👻</span><p>БЕЗ СБОРА ДАННЫХ</p></div>
+        </div>
+    </section>
+
+    <div class="author-link">
+        <a href="https://t.me/na_sh_kodila" target="_blank">ТГ канал автора</a>
+    </div>
+
+    <footer>
+        <p class="mono">© 2025 EVOLVECODE | ВЕРНИТЕ СЕБЕ СЕБЯ</p>
+    </footer>
+</div>
+
+<script>
+    const container = document.getElementById('stars-container');
+    const starCount = 80;
+
+    for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        const size = Math.random() * 2 + 1 + 'px';
+        star.style.width = size;
+        star.style.height = size;
+        star.style.top = Math.random() * 100 + '%';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.setProperty('--duration', Math.random() * 3 + 2 + 's');
+        star.style.animationDelay = Math.random() * 5 + 's';
+        container.appendChild(star);
+    }
+</script>
+
+</body>
+</html>
