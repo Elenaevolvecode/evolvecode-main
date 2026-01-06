@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<!--
+  ═══════════════════════════════════════════════════════════
+  EVOLVECODE / ТОЧКА
+  ═══════════════════════════════════════════════════════════
+  Author: https://t.me/Elena_evolvecode
+  Telegram: @na_sh_kodila
+  Created: 2025
+  ═══════════════════════════════════════════════════════════
+-->
+
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Точка — бесплатное приложение для концентрации внимания и медитации | ЭВОЛЮЦИЯ КОДА</title>
+    <meta name="description" content="Бесплатный тренажёр произвольного внимания. Практика созерцания точки для концентрации, борьбы с СДВГ и рассеянностью. Работает офлайн.">
+    <!-- SEO Keywords -->
+    <meta name="keywords" content="тренажер внимания, концентрация внимания, СДВГ приложение, медитация на точку, тратака, фокус внимания, рассеянность, осознанность, mindfulness, тренировка мозга, улучшить концентрацию, приложение для медитации, бесплатная медитация">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #0d0d12; 
+            --card-bg: rgba(35, 35, 45, 0.4); 
+            --text-main: #ffffff;
+            --text-soft: #e2e2e9;
+            --text-dim: #9494a3;
+            --accent: #c084fc;
+            --accent-green: #4ade80;
+            --accent-orange: #fb923c;
+            --accent-cyan: #22d3ee;
+            --gradient: linear-gradient(135deg, #9333ea 0%, #c084fc 100%);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .mono { font-family: 'Space Mono', monospace; }
+
+        #stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at center, #161625 0%, #0d0d12 100%);
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 0.7; transform: scale(1.2); }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 25px;
+            position: relative;
+        }
+
+        /* Hero Section */
+        header {
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+
+        .hero-label {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: 8px;
+            margin-bottom: 30px;
+            background: linear-gradient(to bottom, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .focus-dot {
+            width: 20px;
+            height: 20px;
+            background: #e2e2e9;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; box-shadow: 0 0 25px rgba(255, 255, 255, 0.5); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--accent-green);
+            max-width: 650px;
+            margin: 0 auto 15px;
+            line-height: 1.5;
+        }
+
+        .hero-tagline {
+            font-size: 1rem;
+            color: var(--text-soft);
+            font-style: italic;
+            margin-bottom: 50px;
+        }
+
+        /* Features Grid */
+        .features-section {
+            padding: 60px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .feature-item {
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-item h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .feature-item p {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        .free-block {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .free-block h3 {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        .free-block p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        /* Quote Block */
+        .quote-section {
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .quote-block {
+            font-style: italic;
+            color: var(--accent);
+            font-size: 1rem;
+            max-width: 750px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .quote-block strong {
+            color: var(--text-main);
+            text-decoration: underline;
+        }
+
+        /* What's Inside Section */
+        .inside-section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 50px;
+            color: var(--text-main);
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+
+        .inside-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .inside-text p {
+            color: var(--text-soft);
+            font-size: 1rem;
+            margin-bottom: 25px;
+        }
+
+        .inside-text ul {
+            list-style: none;
+        }
+
+        .inside-text li {
+            margin-bottom: 25px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .inside-text li::before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .inside-text li strong {
+            color: var(--accent-orange);
+        }
+
+        .inside-text li span {
+            color: var(--text-soft);
+            display: block;
+            margin-top: 5px;
+            font-size: 0.95rem;
+        }
+
+        /* Phone Carousel */
+        .phone-carousel {
+            position: relative;
+            max-width: 280px;
+            margin: 0 auto;
+        }
+
+        .phone-frame {
+            background: #1a1a24;
+            border-radius: 35px;
+            padding: 15px;
+            border: 3px solid #333;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .phone-screen {
+            background: #0d0d12;
+            border-radius: 25px;
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 9/19;
+        }
+
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--border);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .carousel-dot.active {
+            background: var(--accent);
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background 0.3s;
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .carousel-btn.prev { left: -50px; }
+        .carousel-btn.next { right: -50px; }
+
+        /* How it Works Section */
+        .how-section {
+            padding: 80px 0;
+        }
+
+        .how-subtitle {
+            text-align: center;
+            color: var(--text-dim);
+            margin-bottom: 50px;
+            font-size: 1rem;
+        }
+
+        .how-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 25px;
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            transition: all 0.4s ease;
+        }
+
+        .how-card:hover {
+            border-color: rgba(192, 132, 252, 0.3);
+            transform: translateX(5px);
+        }
+
+        .how-icon {
+            font-size: 2.5rem;
+            flex-shrink: 0;
+        }
+
+        .how-content h3 {
+            color: var(--accent-green);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .how-content h4 {
+            color: var(--text-main);
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .how-content p {
+            color: var(--text-soft);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .how-content p strong {
+            color: var(--text-main);
+        }
+
+        .how-content .result-label {
+            color: var(--accent-orange);
+            font-weight: 600;
+        }
+
+        /* Science Block */
+        .science-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .science-block {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .science-block h3 {
+            color: var(--accent-green);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .science-block p {
+            color: var(--text-soft);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(192, 132, 252, 0.3);
+        }
+
+        .faq-question {
+            padding: 25px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .faq-question h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-main);
+            flex: 1;
+        }
+
+        .faq-toggle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-dim);
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 1000px;
+        }
+
+        .faq-answer-inner {
+            padding: 0 30px 25px;
+            color: var(--text-soft);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .faq-answer-inner p {
+            margin-bottom: 15px;
+        }
+
+        .faq-answer-inner strong {
+            color: var(--text-main);
+        }
+
+        .faq-answer-inner a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .faq-answer-inner a:hover {
+            text-decoration: underline;
+        }
+
+        /* CTA Buttons */
+        .cta-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #22c55e 0%, #4ade80 100%);
+            color: #000;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(74, 222, 128, 0.1);
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-author {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .footer-author a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .footer-author a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+
+        .footer-privacy {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            color: var(--text-dim);
+            font-size: 0.8rem;
+        }
+
+        .footer-privacy .brand {
+            color: var(--text-soft);
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; letter-spacing: 4px; }
+            
+            .features-grid { grid-template-columns: 1fr; gap: 40px; }
+            
+            .inside-content { grid-template-columns: 1fr; }
+            
+            .phone-carousel { order: -1; margin-bottom: 40px; }
+            
+            .carousel-btn { display: none; }
+            
+            .how-card { flex-direction: column; gap: 20px; }
+            
+            .cta-buttons { flex-direction: column; align-items: center; }
+            
+            .btn { width: 100%; max-width: 300px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="stars-container"></div>
+
+<div class="container">
+    
+    <!-- Hero Section -->
+    <header>
+        <h1 class="mono">ТОЧКА</h1>
+        <div class="focus-dot"></div>
+        <p class="hero-subtitle">Бесплатное приложение — тренажёр произвольного внимания онлайн и без интернета</p>
+        <p class="hero-tagline">Практика, возвращающая к себе</p>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="features-grid">
+            <div class="feature-item">
+                <span class="feature-icon">👁️</span>
+                <h3>Кнопка «Я отвлекся»</h3>
+                <p>Зашитая в саму точку. Полная статистика любой сессии, доступная только вам.</p>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">📶</span>
+                <h3>Офлайн и онлайн режим работы</h3>
+                <p>Работает без интернета после первого открытия.</p>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">🎵</span>
+                <h3>Глубокие drone-частоты</h3>
+                <p>«Коричневый шум», который отсекает громкость внешнего мира.</p>
+            </div>
+        </div>
+        
+        <div class="free-block">
+            <h3>100% Бесплатно</h3>
+            <p>Без скрытых подписок, рекламы и без сбора персональных данных</p>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-section">
+        <p class="quote-block">
+            Приложение "Точка" не «простой кликер», а ментальный тренажер.<br>
+            Главная ценность — не в том, чтобы не отвлекаться, а в том, чтобы <strong>вовремя замечать</strong> момент ухода в мысли.
+        </p>
+    </section>
+
+    <!-- What's Inside Section -->
+    <section class="inside-section">
+        <h2 class="section-title mono">ЧТО ВНУТРИ?</h2>
+        
+        <div class="inside-content">
+            <div class="inside-text">
+                <p>Сессия в «Точке» — это процесс активного наблюдения за своим вниманием. Здесь вы выступаете в роли исследователя собственного ума:</p>
+                <ul>
+                    <li>
+                        <strong>Вход в фокус:</strong>
+                        <span>После запуска сессии на экране появляется центральный объект — Точка. С этого момента вы направляете весь поток внимания на нее, стараясь сохранять присутствие в моменте.</span>
+                    </li>
+                    <li>
+                        <strong>Фиксация «отлёта»:</strong>
+                        <span>Как только вы замечаете, что ваше внимание захвачено мыслью, образом или внешним шумом — вы нажимаете на Точку. Это действие — не фиксация ошибки, а момент вашего пробуждения.</span>
+                    </li>
+                    <li>
+                        <strong>Сброс и возврат:</strong>
+                        <span>При нажатии Точка ярко вспыхивает. Это ещё и визуальный сигнал для мозга сбросить текущую мысль и мгновенно вернуться в состояние «здесь и сейчас».</span>
+                    </li>
+                    <li>
+                        <strong>Анализ интервалов:</strong>
+                        <span>Свайп вниз завершает практику. Приложение покажет статистику ваших интервалов. Вы увидите, сколько длились периоды вашей реальной осознанности до того, как ум уводил вас в автоматизм.</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="phone-carousel">
+                <button class="carousel-btn prev" onclick="prevSlide()">‹</button>
+                <button class="carousel-btn next" onclick="nextSlide()">›</button>
+                
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <div class="carousel-slides" id="carouselSlides">
+                            <div class="carousel-slide">
+                                <img src="screenshots-tochka/screen1.png" alt="Главный экран приложения Точка">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="screenshots-tochka/screen2.png" alt="Сессия концентрации на точке">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="screenshots-tochka/screen3.png" alt="Фиксация отвлечения - нажатие на точку">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="screenshots-tochka/screen4.png" alt="Статистика сессии медитации">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-nav">
+                    <span class="carousel-dot active" onclick="goToSlide(0)"></span>
+                    <span class="carousel-dot" onclick="goToSlide(1)"></span>
+                    <span class="carousel-dot" onclick="goToSlide(2)"></span>
+                    <span class="carousel-dot" onclick="goToSlide(3)"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works Section -->
+    <section class="how-section">
+        <h2 class="section-title mono">КАК ЭТО РАБОТАЕТ?</h2>
+        <p class="how-subtitle">Три ракурса на один и тот же процесс</p>
+        
+        <div class="how-card">
+            <div class="how-icon">🧠</div>
+            <div class="how-content">
+                <h3>Нейрофизиология</h3>
+                <h4>Что происходит?</h4>
+                <p>В процессе созерцания вы принудительно задействуете <strong>префронтальную кору</strong>, буквально «прокачивая» нейронные связи, отвечающие за волевое управление.</p>
+                <p><span class="result-label">Результат:</span> Укрепляется контроль над импульсами. Там, где раньше вы реагировали автоматически, теперь появляется пространство для осознанного выбора. Вы становитесь хозяином своего внимания.</p>
+            </div>
+        </div>
+        
+        <div class="how-card">
+            <div class="how-icon">✋</div>
+            <div class="how-content">
+                <h3>Психология</h3>
+                <h4>Что происходит?</h4>
+                <p>Вы разрываете связку «мысль — реакция». Мозг учится фиксировать момент зарождения мысли как сторонний объект, не давая ей увлечь вас в эмоциональный поток.</p>
+                <p><span class="result-label">Результат:</span> Выход из режима «автопилота». Снижается уровень тревожности, так как ум больше не блуждает бесконтрольно в страхах прошлого или будущего, возвращаясь в точку «Здесь и Сейчас».</p>
+            </div>
+        </div>
+        
+        <div class="how-card">
+            <div class="how-icon">⚡</div>
+            <div class="how-content">
+                <h3>Энергетика</h3>
+                <h4>Что происходит?</h4>
+                <p>Останавливается хаотичное дробление внимания на тысячи мелких объектов. Ментальный ресурс перестает распыляться и стягивается в единый центр — в Точку.</p>
+                <p><span class="result-label">Результат:</span> Остановка утечки жизненной силы. Внимание превращается в мощный направленный луч. Вы чувствуете прилив энергии и ясности, так как перестаете «кормить» своим вниманием информационный шум.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-buttons">
+            <a href="https://1c35088f-3a2bbc9d-aa83-4fa2-85f6-1b7016b009f1.website.twcstorage.ru/" class="btn btn-primary">УСТАНОВИТЬ ПРИЛОЖЕНИЕ</a>
+            <a href="https://cloud.mail.ru/public/KZbv/nvwxdHMR1" class="btn btn-secondary">ИНСТРУКЦИЯ ПО УСТАНОВКЕ</a>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <h2 class="section-title mono">ВОПРОСЫ И ОТВЕТЫ</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <h4>Я практикую уже неделю, но не чувствую никакого просветления. Может, я что-то делаю не так?</h4>
+                <button class="faq-toggle">+</button>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    <p>Вы ищете «чудо» или «особое состояние», которое нарисовал ваш ум. Но практика — это не про поиск нового, это про смывание старого. Отсутствие ярких спецэффектов — это тоже результат. Возможно, ваша тишина наступает так тихо, что ум её просто не узнаёт, потому что привык к громким эмоциям.</p>
+                    <p>Продолжайте спокойно практиковать концентрацию внимания, и однажды вы просто заметите, что стали спокойнее реагировать на то, что раньше вас выносило.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <h4>А поможет ли практика «Точка» при СДВГ и рассеянности?</h4>
+                <button class="faq-toggle">+</button>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    <p>Концентрация на точке — это прямая тренировка префронтальной коры мозга. В отличие от пассивного отдыха, это активная дисциплина внимания. Регулярное созерцание объекта приучает мозг не реагировать на внешние шумы и внутренние импульсы, что критически важно при высокой отвлекаемости.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <h4>Я начинаю дышать или смотреть в точку и через 5 минут просто проваливаюсь в сон. Это считается за практику?</h4>
+                <button class="faq-toggle">+</button>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    <p>Это значит, что ваше тело истощено хроническим напряжением. Как только вы даете ему немного тишины, оно использует этот шанс, чтобы просто выключиться и восстановиться. Не ругайте себя. Позвольте телу доспать своё.</p>
+                    <p>Со временем, когда базовый дефицит энергии восполнится, вы сможете проходить сквозь сонливость в ту самую «бодрствующую тишину».</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <h4>Я нажимаю кнопку "отвлекся" каждые 10 секунд. Кажется, у меня совсем нет концентрации, я безнадежен?</h4>
+                <button class="faq-toggle">+</button>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    <p>Наоборот! То, что вы нажали кнопку — это момент вашего <strong>пробуждения</strong>. Если вы заметили, что отвлеклись, значит, в этот миг вы стали осознанны.</p>
+                    <p>Победа не в том, чтобы не отвлекаться (это уровень мастера), а в том, чтобы <strong>заметить</strong> улёт. Каждое нажатие — это один жим вашей «мышцы внимания». Радуйтесь каждому нажатию: вы только что поймали свой ум за руку.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <h4>Первые три дня я летала, а сегодня меня все бесит, и я не хочу даже открывать приложение. Почему так?</h4>
+                <button class="faq-toggle">+</button>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    <p>Вы начали меняться, и ваши старые привычки и реакции пытаются вернуть вас в привычное болото, где всё понятно и предсказуемо. Это сопротивление — лучший знак того, что вы попали в цель.</p>
+                    <p>Самое важное в такие дни — просто открыть приложение и сделать хотя бы 3 минуты. Не ради результата, а чтобы показать уму: хозяин здесь вы.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <h4>Чем эта техника отличается от древней практики Тратака?</h4>
+                <button class="faq-toggle">+</button>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    <p>«Точка» основана на принципах йогической практики Тратака (созерцание свечи или символа). В приложении этот метод стал более современным, при помощи честного трекинга отвлечений — кнопка возврата внимания помогает осознать момент ухода и зафиксировать прогресс.</p>
+                    <p>Статистика отвлечений и времени присутствия за всё время использования доступна при установке на гаджет.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <h4>В чем секрет медитации на черном фоне?</h4>
+                <button class="faq-toggle">+</button>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    <p>Черный фон в приложении минимизирует визуальный шум. Когда глаза сфокусированы на одной светящейся точке в пустоте, зрительная кора мозга перестает обрабатывать лишнюю информацию. Это самый быстрый способ войти в состояние глубокой тишины ума и остановить «ментальную жвачку».</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <h4>Есть ли еще приложения для тренировки осознанности?</h4>
+                <button class="faq-toggle">+</button>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    <p>Да, есть. Дыхание тишины — <a href="moment.html">evolvecode.ru/moment</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Science Block -->
+    <section class="science-section">
+        <div class="science-block">
+            <h3>Нейропластичность и фокус</h3>
+            <p>«Современные исследования в области нейробиологии подтверждают: внимание — это восполняемый, но ограниченный ресурс. Практика созерцания объекта (Focused Attention Meditation) снижает активность сети пассивного режима работы мозга (DMN), которая отвечает за блуждание мыслей и тревожность. Используя приложение "Точка", вы используете биологические механизмы нейропластичности, чтобы заново научить свой разум тишине и однонаправленному фокусу».</p>
+        </div>
+    </section>
+
+    <!-- CTA Section 2 -->
+    <section class="cta-section">
+        <div class="cta-buttons">
+            <a href="https://1c35088f-3a2bbc9d-aa83-4fa2-85f6-1b7016b009f1.website.twcstorage.ru/" class="btn btn-primary">УСТАНОВИТЬ ПРИЛОЖЕНИЕ</a>
+            <a href="https://cloud.mail.ru/public/KZbv/nvwxdHMR1" class="btn btn-secondary">ИНСТРУКЦИЯ ПО УСТАНОВКЕ</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-author">Автор и разработчик: evolvecode. <a href="https://t.me/na_sh_kodila" target="_blank">Канал в ТГ</a></p>
+        <a href="index.html" class="back-link">← Вернуться на главную</a>
+
+        <div class="footer-privacy">
+            <p><span class="brand">EVOLVECODE / ЭВОЛЮЦИЯ КОДА</span> не собирает и не обрабатывает никакие ваши данные.</p>
+        </div>
+    </footer>
+</div>
+
+<script>
+    // Звёзды
+    const container = document.getElementById('stars-container');
+    const starCount = 80;
+
+    for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        const size = Math.random() * 2 + 1 + 'px';
+        star.style.width = size;
+        star.style.height = size;
+        star.style.top = Math.random() * 100 + '%';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.setProperty('--duration', Math.random() * 3 + 2 + 's');
+        star.style.animationDelay = Math.random() * 5 + 's';
+        container.appendChild(star);
+    }
+
+    // Карусель
+    let currentSlide = 0;
+    const totalSlides = 4;
+
+    function updateCarousel() {
+        const slides = document.getElementById('carouselSlides');
+        slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+        
+        document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+        });
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+    }
+
+    function goToSlide(index) {
+        currentSlide = index;
+        updateCarousel();
+    }
+
+    // Автопрокрутка карусели
+    setInterval(nextSlide, 4000);
+
+    // FAQ аккордеон
+    function toggleFaq(element) {
+        const faqItem = element.parentElement;
+        const isActive = faqItem.classList.contains('active');
+        
+        // Закрыть все
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.classList.remove('active');
+        });
+        
+        // Открыть текущий (если не был открыт)
+        if (!isActive) {
+            faqItem.classList.add('active');
+        }
+    }
+</script>
+
+</body>
+</html>
