@@ -971,6 +971,276 @@
             .dialogue-question, .dialogue-answer { padding-left: 15px; font-size: 0.95rem; }
             .dialogue-conclusion { padding: 25px; font-size: 0.95rem; }
         }
+
+/* ═══════════════════════════════════════════════════════════
+   TRANSFORMATION SPHERE - Сфера трансформации
+   ═══════════════════════════════════════════════════════════ */
+
+.transformation-section {
+     padding: 60px 0 5px 0;
+}
+
+.transformation-title {
+    text-align: center;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, #ef4444, #fb923c, #facc15);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.transformation-subtitle {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+.sphere-box-transform {
+    position: relative;
+    height: 380px;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    transition: all 0.5s ease;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.sphere-wrapper-transform {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sphere-transform {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: relative;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+/* Морфирующие волны */
+.morph-wave {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+.morph-wave svg {
+    width: 100%;
+    height: 100%;
+}
+
+.morph-wave-1 {
+    width: 60px;
+    height: 60px;
+    animation: waveExpand1 3s ease-out infinite;
+}
+
+.morph-wave-2 {
+    width: 60px;
+    height: 60px;
+    animation: waveExpand2 3s ease-out infinite 0.75s;
+}
+
+.morph-wave-3 {
+    width: 60px;
+    height: 60px;
+    animation: waveExpand3 3s ease-out infinite 1.5s;
+}
+
+@keyframes waveExpand1 {
+    0% { width: 60px; height: 60px; opacity: 0.9; }
+    100% { width: 380px; height: 380px; opacity: 0; }
+}
+
+@keyframes waveExpand2 {
+    0% { width: 60px; height: 60px; opacity: 0.7; }
+    100% { width: 380px; height: 380px; opacity: 0; }
+}
+
+@keyframes waveExpand3 {
+    0% { width: 60px; height: 60px; opacity: 0.5; }
+    100% { width: 380px; height: 380px; opacity: 0; }
+}
+
+/* Возвращающиеся волны */
+.morph-wave-return {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+.morph-wave-return svg {
+    width: 100%;
+    height: 100%;
+}
+
+.morph-wave-return-1 {
+    width: 380px;
+    height: 380px;
+    animation: waveReturn1 3s ease-in infinite 1.5s;
+}
+
+.morph-wave-return-2 {
+    width: 380px;
+    height: 380px;
+    animation: waveReturn2 3s ease-in infinite 2.25s;
+}
+
+@keyframes waveReturn1 {
+    0% { width: 380px; height: 380px; opacity: 0; }
+    30% { opacity: 0.6; }
+    100% { width: 65px; height: 65px; opacity: 0.7; }
+}
+
+@keyframes waveReturn2 {
+    0% { width: 380px; height: 380px; opacity: 0; }
+    30% { opacity: 0.4; }
+    100% { width: 65px; height: 65px; opacity: 0.5; }
+}
+
+/* Мягкие возвращающиеся волны для тишины */
+.soft-wave-return {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    filter: blur(8px);
+}
+
+.soft-wave-return-1 {
+    width: 380px;
+    height: 380px;
+    animation: softWaveReturn1 5s ease-in-out infinite 2.5s;
+}
+
+.soft-wave-return-2 {
+    width: 380px;
+    height: 380px;
+    animation: softWaveReturn2 5s ease-in-out infinite 4s;
+}
+
+@keyframes softWaveReturn1 {
+    0% { width: 380px; height: 380px; opacity: 0; }
+    30% { opacity: 0.5; }
+    70% { opacity: 0.6; }
+    100% { width: 70px; height: 70px; opacity: 0; }
+}
+
+@keyframes softWaveReturn2 {
+    0% { width: 380px; height: 380px; opacity: 0; }
+    30% { opacity: 0.4; }
+    70% { opacity: 0.5; }
+    100% { width: 70px; height: 70px; opacity: 0; }
+}
+
+/* Эффекты */
+.transform-impact-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    opacity: 0;
+    z-index: 6;
+    animation: transformImpactPulse 3s ease-out infinite 2.8s;
+    transition: all 0.5s ease;
+}
+
+@keyframes transformImpactPulse {
+    0%, 85% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+    92% { opacity: var(--impact-opacity, 1); transform: translate(-50%, -50%) scale(1.4); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
+}
+
+.transform-warm-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    z-index: 5;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.transform-warm-embrace {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    opacity: 0;
+    z-index: 4;
+    transition: all 0.5s ease;
+}
+
+.transform-phase-indicator {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.5s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sphere-box-transform {
+        height: 320px;
+    }
+
+    @keyframes waveExpand1, waveExpand2, waveExpand3 {
+        0% { width: 60px; height: 60px; }
+        100% { width: 320px; height: 320px; opacity: 0; }
+    }
+
+    @keyframes waveReturn1, waveReturn2 {
+        0% { width: 320px; height: 320px; opacity: 0; }
+        100% { width: 65px; height: 65px; }
+    }
+
+    @keyframes softWaveReturn1, softWaveReturn2 {
+        0% { width: 320px; height: 320px; opacity: 0; }
+        100% { width: 70px; height: 70px; opacity: 0; }
+    }
+
+    .morph-wave-return-1,
+    .morph-wave-return-2,
+    .soft-wave-return-1,
+    .soft-wave-return-2 {
+        width: 320px;
+        height: 320px;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -1113,9 +1383,71 @@
                 Те неразрешимые проблемы, которые вы видите в своей жизни, являются самым честным зеркалом вашего внутреннего кипения претензиями ко всему вокруг и себе самому - вашего неприятия к окружающему. Вы сами создаёте их своим дрожанием.
             </p>
             <p>
-                И, да - ваша тишина всё сделает за вас сама. Без всякой мистики. Посмотрите ещё раз на желтую сферу и попробуйте с недельку каждый день возвращаться в тишину.
-            </p>
+            И, да - ваша тишина всё сделает за вас сама. Безо всякой мистики. Посмотрите ещё раз на жёлтую сферу и попробуйте с недельку каждый день возвращаться в тишину.
+           </p>
+            <p>
+            С каждой новой сессией - напряженность и колючесть красной сферы будет заменяться на мягкость и тепло желтой сферы тишины. Как внутри вас, так и снаружи - в событиях вокруг.
+        </p>
         </div>
+
+<!-- Transformation Sphere Section -->
+<section class="transformation-section">
+    <h3 class="transformation-title">Путь трансформации</h3>
+    <p class="transformation-subtitle">Визуализация внутренних процессов, происходящих во время практики</p>
+    
+    <div class="sphere-box-transform" id="sphereBoxTransform">
+        <div class="sphere-wrapper-transform">
+            
+            <!-- Морфирующие волны (исходящие) -->
+            <div class="morph-wave morph-wave-1">
+                <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path id="morphPath1" d="" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+            <div class="morph-wave morph-wave-2">
+                <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path id="morphPath2" d="" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+            <div class="morph-wave morph-wave-3">
+                <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path id="morphPath3" d="" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+            
+            <!-- Возвращающиеся волны (зубчатые, для хаоса) -->
+            <div class="morph-wave-return morph-wave-return-1">
+                <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path id="morphReturn1" d="" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+            <div class="morph-wave-return morph-wave-return-2">
+                <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path id="morphReturn2" d="" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+            
+            <!-- Мягкие возвращающиеся волны (для тишины) -->
+            <div class="soft-wave-return soft-wave-return-1" id="softReturn1"></div>
+            <div class="soft-wave-return soft-wave-return-2" id="softReturn2"></div>
+            
+            <!-- Вспышка удара -->
+            <div class="transform-impact-glow" id="transformImpactGlow"></div>
+
+            <!-- Тёплое свечение -->
+            <div class="transform-warm-glow" id="transformWarmGlow"></div>
+            
+            <!-- Объятие -->
+            <div class="transform-warm-embrace" id="transformWarmEmbrace"></div>
+            
+            <!-- Ядро сферы -->
+            <div class="sphere-transform" id="sphereCoreTransform"></div>
+        </div>
+    </div>
+
+    <p class="transform-phase-indicator" id="transformPhaseText">Хаос → Тишина</p>
+</section>
+
     </section>
 
     <section class="inside-section">
@@ -1490,6 +1822,293 @@
     if (chaosReturns[0]) chaosReturns[0].setAttribute('d', chaosReturn1Path);
     if (chaosReturns[1]) chaosReturns[1].setAttribute('d', chaosReturn2Path);
     if (chaosReturns[2]) chaosReturns[2].setAttribute('d', chaosReturn3Path);
+
+// ═══════════════════════════════════════════════════════════
+// TRANSFORMATION SPHERE - Сфера трансформации
+// ═══════════════════════════════════════════════════════════
+
+(function() {
+    const transformCycleDuration = 25000;
+    let transformStartTime = Date.now() - 500;
+
+    // Элементы
+    const sphereBoxT = document.getElementById('sphereBoxTransform');
+    const sphereCoreT = document.getElementById('sphereCoreTransform');
+    const impactGlowT = document.getElementById('transformImpactGlow');
+    const warmGlowT = document.getElementById('transformWarmGlow');
+    const warmEmbraceT = document.getElementById('transformWarmEmbrace');
+    const phaseTextT = document.getElementById('transformPhaseText');
+    const softReturn1T = document.getElementById('softReturn1');
+    const softReturn2T = document.getElementById('softReturn2');
+    
+    const pathsT = [
+        document.getElementById('morphPath1'),
+        document.getElementById('morphPath2'),
+        document.getElementById('morphPath3'),
+        document.getElementById('morphReturn1'),
+        document.getElementById('morphReturn2')
+    ];
+
+    const returnWavesT = document.querySelectorAll('.morph-wave-return');
+
+    // Цвета
+    const colorRedT = { r: 239, g: 68, b: 68 };
+    const colorOrangeT = { r: 251, g: 146, b: 60 };
+    const colorGoldT = { r: 250, g: 204, b: 21 };
+
+    function lerpColorT(c1, c2, t) {
+        return {
+            r: Math.round(c1.r + (c2.r - c1.r) * t),
+            g: Math.round(c1.g + (c2.g - c1.g) * t),
+            b: Math.round(c1.b + (c2.b - c1.b) * t)
+        };
+    }
+
+    function colorToRgbaT(c, alpha) {
+        return `rgba(${c.r}, ${c.g}, ${c.b}, ${alpha})`;
+    }
+
+    function colorToRgbT(c) {
+        return `rgb(${c.r}, ${c.g}, ${c.b})`;
+    }
+
+    function generateMorphingCircleT(cx, cy, baseRadius, spikes, chaos, spikeDepth, seed) {
+        const random = (i) => {
+            const x = Math.sin(seed + i * 127.1) * 43758.5453;
+            return x - Math.floor(x);
+        };
+
+        let path = '';
+        const points = spikes * 2;
+        const angleStep = (Math.PI * 2) / points;
+        
+        for (let i = 0; i < points; i++) {
+            const angleVariation = chaos > 0.05 ? (random(i) - 0.5) * angleStep * chaos * 0.4 : 0;
+            const angle = i * angleStep - Math.PI / 2 + angleVariation;
+            
+            let radius;
+            if (i % 2 === 0) {
+                const variation = chaos > 0.05 ? 1 + (random(i + 100) - 0.5) * chaos * 0.5 : 1;
+                radius = baseRadius * variation;
+            } else {
+                const depth = baseRadius - (baseRadius * spikeDepth * chaos);
+                const variation = chaos > 0.05 ? 1 + (random(i + 200) - 0.5) * chaos * 0.4 : 1;
+                radius = Math.max(depth * variation, baseRadius * 0.7);
+            }
+            
+            const x = cx + Math.cos(angle) * radius;
+            const y = cy + Math.sin(angle) * radius;
+            path += (i === 0 ? 'M' : 'L') + x.toFixed(2) + ',' + y.toFixed(2) + ' ';
+        }
+        path += 'Z';
+        return path;
+    }
+
+    // Вибрация
+    let vibrationOffsetT = { x: 0, y: 0 };
+    let targetVibrationT = { x: 0, y: 0 };
+    let vibrationTimerT = 0;
+
+    function updateVibrationT(chaos, deltaTime) {
+        vibrationTimerT += deltaTime;
+        
+        const vibrationSpeed = 50 + chaos * 100;
+        const vibrationStrength = chaos * 4;
+        
+        if (vibrationTimerT > vibrationSpeed && chaos > 0.1) {
+            vibrationTimerT = 0;
+            targetVibrationT = {
+                x: (Math.random() - 0.5) * 2 * vibrationStrength,
+                y: (Math.random() - 0.5) * 2 * vibrationStrength
+            };
+        }
+        
+        const smoothing = chaos > 0.1 ? 0.3 : 0.1;
+        vibrationOffsetT.x += (targetVibrationT.x - vibrationOffsetT.x) * smoothing;
+        vibrationOffsetT.y += (targetVibrationT.y - vibrationOffsetT.y) * smoothing;
+        
+        if (chaos < 0.1) {
+            vibrationOffsetT.x *= 0.9;
+            vibrationOffsetT.y *= 0.9;
+        }
+        
+        return vibrationOffsetT;
+    }
+
+    function getBreathScaleT(progress, chaos) {
+        if (chaos > 0.3) return 1;
+        
+        const breathProgress = (progress * 2) % 1;
+        const breathAmount = (1 - chaos / 0.3) * 0.1;
+        const breath = Math.sin(breathProgress * Math.PI * 2) * breathAmount;
+        return 1 + breath * 0.5 + breathAmount * 0.5;
+    }
+
+    let lastTimeT = Date.now();
+    let seedT = Math.random() * 1000;
+
+    function animateTransform() {
+        // Проверяем, что элементы существуют
+        if (!sphereBoxT || !sphereCoreT) {
+            requestAnimationFrame(animateTransform);
+            return;
+        }
+
+        const now = Date.now();
+        const deltaTime = now - lastTimeT;
+        lastTimeT = now;
+        
+        const elapsed = (now - transformStartTime) % transformCycleDuration;
+        const progress = elapsed / transformCycleDuration;
+        
+        seedT += deltaTime * 0.001;
+
+        // Параметры
+        let chaos;
+        if (progress < 0.15) {
+            chaos = 1;
+        } else if (progress < 0.6) {
+            const t = (progress - 0.15) / 0.45;
+            chaos = 1 - (t * t);
+        } else {
+            chaos = 0;
+        }
+
+        let currentColor;
+        if (progress < 0.25) {
+            const t = progress / 0.25;
+            currentColor = lerpColorT(colorRedT, colorOrangeT, t * t);
+        } else if (progress < 0.55) {
+            const t = (progress - 0.25) / 0.3;
+            currentColor = lerpColorT(colorOrangeT, colorGoldT, t);
+        } else {
+            currentColor = colorGoldT;
+        }
+
+        const spikeDepth = 0.25 * chaos;
+        const spikes = Math.round(16 + chaos * 8);
+        const waveOpacity = 0.3 + chaos * 0.6;
+        
+        // Волны
+        pathsT.forEach((path, index) => {
+            if (!path) return;
+            
+            const pathChaos = chaos * (0.85 + index * 0.05);
+            const pathSpikes = spikes + (index % 3) - 1;
+            const pathSeed = seedT + index * 50;
+            
+            const d = generateMorphingCircleT(100, 100, 100, pathSpikes, pathChaos, spikeDepth, pathSeed);
+            path.setAttribute('d', d);
+            path.setAttribute('stroke', colorToRgbaT(currentColor, waveOpacity - index * 0.1));
+        });
+
+        // Возвращающиеся волны
+        returnWavesT.forEach(wave => {
+            if (chaos > 0.3) {
+                wave.style.opacity = '';
+                wave.style.animationPlayState = 'running';
+            } else {
+                wave.style.opacity = chaos / 0.3;
+                if (chaos < 0.1) {
+                    wave.style.animationPlayState = 'paused';
+                }
+            }
+        });
+        
+        // Мягкие волны
+        const softOpacity = Math.max(0, (1 - chaos) - 0.3) / 0.7;
+        
+        if (softReturn1T) {
+            softReturn1T.style.background = `radial-gradient(circle, 
+                transparent 0%, 
+                ${colorToRgbaT(colorGoldT, 0.4 * softOpacity)} 40%, 
+                ${colorToRgbaT(colorGoldT, 0.6 * softOpacity)} 60%, 
+                ${colorToRgbaT(colorGoldT, 0.3 * softOpacity)} 80%, 
+                transparent 100%)`;
+            softReturn1T.style.boxShadow = `
+                0 0 30px ${colorToRgbaT(colorGoldT, 0.3 * softOpacity)},
+                inset 0 0 30px ${colorToRgbaT(colorGoldT, 0.2 * softOpacity)}`;
+        }
+        
+        if (softReturn2T) {
+            softReturn2T.style.background = `radial-gradient(circle, 
+                transparent 0%, 
+                ${colorToRgbaT(colorGoldT, 0.3 * softOpacity)} 40%, 
+                ${colorToRgbaT(colorGoldT, 0.5 * softOpacity)} 60%, 
+                ${colorToRgbaT(colorGoldT, 0.2 * softOpacity)} 80%, 
+                transparent 100%)`;
+            softReturn2T.style.boxShadow = `
+                0 0 25px ${colorToRgbaT(colorGoldT, 0.25 * softOpacity)},
+                inset 0 0 25px ${colorToRgbaT(colorGoldT, 0.15 * softOpacity)}`;
+        }
+
+        // Сфера
+        const vibration = updateVibrationT(chaos, deltaTime);
+        const breathScale = getBreathScaleT(progress, chaos);
+        
+        sphereCoreT.style.transform = `translate(${vibration.x}px, ${vibration.y}px) scale(${breathScale})`;
+        
+        const glowSize = 20 + (1 - chaos) * 15;
+        const glowSpread = 40 + (1 - chaos) * 30;
+        sphereCoreT.style.background = `radial-gradient(circle at 30% 30%, 
+            ${colorToRgbaT({r: currentColor.r + 40, g: currentColor.g + 40, b: currentColor.b + 40}, 1)}, 
+            ${colorToRgbT(currentColor)}, 
+            ${colorToRgbaT({r: Math.max(0, currentColor.r - 60), g: Math.max(0, currentColor.g - 60), b: Math.max(0, currentColor.b - 30)}, 1)})`;
+        sphereCoreT.style.boxShadow = `
+            0 0 ${glowSize}px ${colorToRgbaT(currentColor, 0.8)},
+            0 0 ${glowSpread}px ${colorToRgbaT(currentColor, 0.4)},
+            inset 0 -5px 15px rgba(0,0,0,0.3)`;
+
+        // Вспышка
+        if (impactGlowT) {
+            impactGlowT.style.setProperty('--impact-opacity', chaos > 0.3 ? 1 : chaos / 0.3);
+            impactGlowT.style.background = `radial-gradient(circle, ${colorToRgbaT(currentColor, 0.7 * chaos)} 0%, transparent 70%)`;
+        }
+
+        // Свечение
+        const glowOpacity = Math.max(0, (1 - chaos) - 0.3) / 0.7;
+        if (warmGlowT) {
+            warmGlowT.style.opacity = glowOpacity;
+            warmGlowT.style.width = (70 + glowOpacity * 40) + 'px';
+            warmGlowT.style.height = (70 + glowOpacity * 40) + 'px';
+            warmGlowT.style.background = `radial-gradient(circle, ${colorToRgbaT(currentColor, 0.25 * glowOpacity)} 0%, transparent 70%)`;
+        }
+
+        // Объятие
+        const embraceOpacity = chaos < 0.1 ? (0.1 - chaos) / 0.1 : 0;
+        if (warmEmbraceT) {
+            warmEmbraceT.style.opacity = embraceOpacity * 0.8;
+            warmEmbraceT.style.width = (80 + embraceOpacity * 20) + 'px';
+            warmEmbraceT.style.height = (80 + embraceOpacity * 20) + 'px';
+            warmEmbraceT.style.background = `radial-gradient(circle, ${colorToRgbaT(colorGoldT, 0.2 * embraceOpacity)} 0%, transparent 60%)`;
+        }
+
+        // Рамка
+        sphereBoxT.style.borderColor = colorToRgbaT(currentColor, 0.3 + chaos * 0.2);
+        sphereBoxT.style.background = `radial-gradient(circle at center, ${colorToRgbaT(currentColor, 0.08)} 0%, transparent 70%)`;
+
+        // Текст
+        if (phaseTextT) {
+            phaseTextT.style.color = colorToRgbT(currentColor);
+            
+            if (progress < 0.2) {
+                phaseTextT.textContent = 'Хаос';
+            } else if (progress < 0.45) {
+                phaseTextT.textContent = 'Успокоение...';
+            } else if (progress < 0.65) {
+                phaseTextT.textContent = 'Переход...';
+            } else {
+                phaseTextT.textContent = 'Тишина';
+            }
+        }
+
+        requestAnimationFrame(animateTransform);
+    }
+
+    // Запуск анимации
+    animateTransform();
+})();
+
 </script>
 
 </body>
