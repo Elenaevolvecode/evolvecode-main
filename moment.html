@@ -129,7 +129,7 @@
         .hero-benefits {
             list-style: none;
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
         }
 
         .hero-benefits li {
@@ -144,7 +144,7 @@
         }
 
         .features-section {
-            padding: 60px 0;
+            padding: 30px 0;
         }
 
         .features-grid {
@@ -184,7 +184,7 @@
             font-size: 1rem;
             max-width: 700px;
             margin: 0 auto;
-            padding: 30px 0;
+            padding: 20px 0;
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
         }
@@ -754,7 +754,7 @@
         .carousel-btn.prev { left: -50px; }
         .carousel-btn.next { right: -50px; }
 
-        .how-section { padding: 80px 0; }
+        .how-section { padding: 50px 0; }
 
         .how-subtitle {
             text-align: center;
@@ -876,7 +876,7 @@
         .faq-answer-inner a { color: var(--accent); text-decoration: none; }
         .faq-answer-inner a:hover { text-decoration: underline; }
 
-        .cta-section { padding: 60px 0; text-align: center; }
+        .cta-section { padding: 10px 0; text-align: center; }
 
         .cta-buttons {
             display: flex;
@@ -1241,6 +1241,24 @@
     }
 }
 
+.install-note {
+    margin-top: 30px;
+    padding: 20px 25px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    line-height: 1.7;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.install-note strong {
+    color: var(--accent-orange);
+}
+
     </style>
 </head>
 <body>
@@ -1563,11 +1581,15 @@
     </section>
 
     <section class="cta-section">
-        <div class="cta-buttons">
-            <a href="https://1c35088f-moment.website.twcstorage.ru" class="btn btn-primary">ПЕРЕЙТИ К ПРИЛОЖЕНИЮ</a>
-            <a href="https://cloud.mail.ru/public/KZbv/nvwxdHMR1" class="btn btn-secondary">ИНСТРУКЦИЯ ПО УСТАНОВКЕ</a>
-        </div>
-    </section>
+    <div class="cta-buttons">
+        <a href="https://1c35088f-moment.website.twcstorage.ru" class="btn btn-primary">ПЕРЕЙТИ К ПРИЛОЖЕНИЮ</a>
+        <a href="https://cloud.mail.ru/public/KZbv/nvwxdHMR1" class="btn btn-secondary">ИНСТРУКЦИЯ ПО УСТАНОВКЕ</a>
+    </div>
+    <p class="install-note">
+        <strong>Внимание!</strong> На Андроидах и компьютерах/ноутбуках браузер Chrome сам при полной загрузке страницы с приложением предлагает установку в виде всплывающего окна «Установить приложение/Добавить приложение на главный экран». Вам остаётся только подтвердить, нажав на соответствующую кнопку. В остальных случаях, для установки ознакомьтесь с инструкцией или пользуйтесь онлайн-версией приложения.
+    </p>
+</section>
+
 
     <section class="faq-section">
         <h2 class="section-title mono">Вопросы и ответы</h2>
@@ -2115,4 +2137,3 @@
 
 </body>
 </html>
-
