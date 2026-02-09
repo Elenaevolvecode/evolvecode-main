@@ -1,588 +1,314 @@
 <!DOCTYPE html>
-<!--
-  ═══════════════════════════════════════════════════════════
-  EVOLVECODE / ЭВОЛЮЦИЯ КОДА
-  ═══════════════════════════════════════════════════════════
-  Author: https://t.me/Elena_evolvecode
-  Telegram: @na_sh_kodila
-  Created: 2025
-  License: All rights reserved
-  ═══════════════════════════════════════════════════════════
--->
-
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Бесплатные приложения от стресса — антистресс, тренировка внимания, дыхание | ЭВОЛЮЦИЯ КОДА</title>
-    <meta name="description" content="Бесплатные антистресс приложения для тренировки внимания и дыхательных практик. Снятие стресса, управление вниманием и дыхание для расслабления. Без рекламы и регистрации.">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     
+    <title>evolvecode — Елена, веб-разработчик</title>
+    <meta name="description" content="Делаю вещи, которые работают. Веб-приложения, статические сайты, инструменты. Без лишнего.">
+    
+    <meta property="og:title" content="evolvecode — Елена, веб-разработчик">
+    <meta property="og:description" content="Делаю вещи, которые работают.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://evolvecode.ru/">
+    <meta property="og:locale" content="ru_RU">
+    
+    <link rel="canonical" href="https://evolvecode.ru/">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Еlena",
+    "url": "https://evolvecode.ru",
+    "jobTitle": "Веб-разработчик",
+    "sameAs": [
+        "https://t.me/na_sh_kodila",
+        "https://github.com/Elenaevolvecode"
+    ]
+}
+</script>
+
 
     <style>
         :root {
-            --bg-color: #0d0d12; 
-            --card-bg: rgba(35, 35, 45, 0.4); 
-            --text-main: #ffffff;
-            --text-soft: #e2e2e9;
-            --text-dim: #9494a3;
+            --bg: #0a0a0f;
+            --surface: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
+            --text: #e8e8ed;
+            --text-dim: #6b6b7b;
             --accent: #c084fc;
-            --gradient: linear-gradient(135deg, #9333ea 0%, #c084fc 100%);
-            --border: rgba(255, 255, 255, 0.1);
+            --accent-hover: #d8b4fe;
+            --green: #4ade80;
         }
-
+        
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
+        
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            background: var(--bg);
+            color: var(--text);
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            overflow-x: hidden;
-            position: relative;
+            min-height: 100vh;
         }
-
-        #stars-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: radial-gradient(circle at center, #161625 0%, #0d0d12 100%);
-        }
-
-        .star {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            opacity: 0;
-            animation: twinkle var(--duration) infinite ease-in-out;
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0; transform: scale(0.5); }
-            50% { opacity: 0.7; transform: scale(1.2); }
-        }
-
+        
+        .mono { font-family: 'Space Mono', monospace; }
+        
         .container {
-            max-width: 900px;
+            max-width: 720px;
             margin: 0 auto;
             padding: 0 25px;
-            position: relative;
         }
-
-        header {
-            padding: 40px 0 60px;
-            text-align: center;
+        
+        /* ─── Hero ─── */
+        .hero {
+            padding: 60px 0 20px;
         }
-
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: 4px;
-            margin-bottom: 15px;
-            background: linear-gradient(to bottom, #fff, #888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .tagline {
-            font-size: 1.1rem;
-            color: var(--text-dim);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .apps-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            margin-bottom: 80px;
-        }
-
-        .app-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border);
-            padding: 50px 35px;
-            border-radius: 24px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            transition: all 0.4s ease;
-        }
-
-        .app-card:hover {
-            border-color: rgba(192, 132, 252, 0.4);
-            transform: translateY(-5px);
-            background: rgba(45, 45, 60, 0.5);
-        }
-
-        .app-card h2 { font-size: 1.6rem; margin-bottom: 10px; font-weight: 700; letter-spacing: 1px; }
-        .app-subtitle { color: var(--accent); font-size: 0.85rem; margin-bottom: 20px; font-weight: 600; text-transform: uppercase; }
-        .app-card p { color: var(--text-soft); font-size: 0.95rem; margin-bottom: 35px; flex-grow: 1; }
-
-        .btn {
-            display: inline-block;
-            width: 220px; 
-            padding: 16px 0;
-            background: transparent;
-            color: var(--text-main);
-            border: 1px solid var(--accent);
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            transition: all 0.3s;
-            text-align: center;
-        }
-
-        .btn:hover {
-            background: var(--gradient);
-            border-color: transparent;
-            box-shadow: 0 10px 20px rgba(147, 51, 234, 0.3);
-            transform: scale(1.03);
-        }
-
-        .questions-section {
-            padding-bottom: 80px;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 1.5rem;
-            margin-bottom: 40px;
-            color: var(--text-main);
-            font-weight: 700;
-        }
-
-        .question-pair {
-            margin-bottom: 20px;
-            background: var(--card-bg);
-            backdrop-filter: blur(5px);
-            padding: 35px;
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: default;
-        }
-
-        .question-pair:hover {
-            transform: scale(1.02);
-            background: rgba(50, 50, 70, 0.4);
-            border-color: rgba(192, 132, 252, 0.3);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .question-text {
-            font-size: 1.15rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: var(--text-main);
-        }
-
-        .answer-text {
-            font-size: 1rem;
-            color: var(--text-soft);
-            line-height: 1.6;
-            font-weight: 400;
-        }
-
-        /* База знаний */
-        .knowledge-section {
-            padding-bottom: 80px;
-        }
-
-        .knowledge-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .knowledge-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border);
-            padding: 35px 25px;
-            border-radius: 20px;
-            text-align: center;
-            transition: all 0.4s ease;
-            cursor: pointer;
-        }
-
-        .knowledge-card:hover {
-            border-color: rgba(192, 132, 252, 0.4);
-            transform: translateY(-5px);
-            background: rgba(45, 45, 60, 0.5);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .knowledge-card h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: var(--text-main);
-            line-height: 1.4;
-        }
-
-        .knowledge-card .card-preview {
-            font-size: 0.9rem;
-            color: var(--text-dim);
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
-
-        .knowledge-card .read-more {
-            color: var(--accent);
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Модальное окно */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            overflow-y: auto;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: #1a1a24;
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            max-width: 700px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            padding: 50px 45px;
-            position: relative;
-            animation: modalFadeIn 0.3s ease;
-        }
-
-        @keyframes modalFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 20px;
-            right: 25px;
-            background: none;
-            border: none;
-            color: var(--text-dim);
-            font-size: 2rem;
-            cursor: pointer;
-            transition: color 0.3s;
-            line-height: 1;
-        }
-
-        .modal-close:hover {
-            color: var(--accent);
-        }
-
-        .modal-content h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 25px;
-            color: var(--text-main);
-            padding-right: 40px;
-        }
-
-        .modal-content .article-text {
-            font-size: 1rem;
-            color: var(--text-soft);
-            line-height: 1.8;
-        }
-
-        .modal-content .article-text p {
-            margin-bottom: 18px;
-        }
-
-        .modal-content .article-text strong {
-            color: var(--text-main);
-            font-weight: 600;
-        }
-
-        .ethics { padding: 80px 0 20px; text-align: center; }
-        .ethics-features { display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; margin-bottom: 30px;}
-        .ethics-item span { font-size: 1.5rem; display: block; margin-bottom: 10px; }
-        .ethics-item p { font-size: 0.85rem; color: var(--text-dim); font-weight: 500; }
-
-        .author-link {
-            text-align: center;
-            padding-bottom: 60px;
-        }
-
-        .author-link a {
-            color: var(--text-dim);
-            text-decoration: none;
-            font-size: 1.5rem;
+        
+        .hero-name {
             font-family: 'Space Mono', monospace;
-            border-bottom: 1px dashed #444;
-            transition: all 0.3s;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text);
         }
-
-        .author-link a:hover {
+        
+        .hero-name span {
             color: var(--accent);
-            border-bottom-color: var(--accent);
+        }
+        
+        .hero-role {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            margin-bottom: 35px;
+        }
+        
+        .hero-bio {
+            font-size: 1.05rem;
+            color: var(--text);
+            line-height: 1.8;
+            max-width: 560px;
+        }
+        
+        .hero-bio p {
+            margin-bottom: 15px;
+        }
+        
+        .hero-bio em {
+            color: var(--accent);
+            font-style: normal;
+        }
+        
+        /* ─── Projects ─── */
+        .projects {
+            padding: 30px 0 40px;
+            border-top: 1px solid var(--border);
+        }
+        
+        .section-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 35px;
+        }
+        
+        .project {
+            display: block;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 35px;
+            margin-bottom: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .project:hover {
+            border-color: rgba(192, 132, 252, 0.3);
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            gap: 15px;
+        }
+        
+        .project-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+        
+        .project-status {
+            font-size: 0.75rem;
+            color: var(--green);
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            padding: 3px 10px;
+            border-radius: 20px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        
+        .project-desc {
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            margin-bottom: 18px;
+            line-height: 1.6;
+        }
+        
+        .project-stack {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .tag {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+        
+        .project-arrow {
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 15px;
+            display: inline-block;
+        }
+        
+        .about {
+            padding: 30px 0 40px;
+            border-top: 1px solid var(--border);
+        }
+        
+        .about-text {
+            max-width: 560px;
+        }
+        
+        .about-text p {
+            font-size: 1.05rem;
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        .about-text em {
+            color: var(--accent);
+            font-style: normal;
         }
 
-        footer { padding: 40px 0; text-align: center; color: #444; font-size: 0.75rem; border-top: 1px solid var(--border); }
-
+        /* ─── Contacts ─── */
+        .contacts {
+            padding: 40px 0 30px;
+            border-top: 1px solid var(--border);
+        }
+        
+        .contact-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        
+        .contact-links a:hover {
+            color: var(--accent);
+        }
+        
+        /* ─── Footer ─── */
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        
+        footer p {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+        
+        /* ─── Mobile ─── */
         @media (max-width: 768px) {
-            .apps-grid { grid-template-columns: 1fr; }
-            .knowledge-grid { grid-template-columns: 1fr; }
-            .btn { width: 100%; }
-            .modal-content { padding: 40px 25px; }
-            .modal-content h2 { font-size: 1.3rem; }
+            .hero { padding: 80px 0 30px; }
+            .hero-name { font-size: 1.7rem; }
+            .project { padding: 25px; }
+            .project-header { flex-direction: column; }
         }
     </style>
 </head>
+
 <body>
-
-<div id="stars-container"></div>
-
-<div class="container">
-    
-    <header>
-        <h1 class="mono">ЭВОЛЮЦИЯ КОДА</h1>
-        <p class="tagline">Бесплатные приложения для выхода из режима стресса.</p>
-    </header>
-
-    <section class="apps-section">
-    <div class="apps-grid">
-        <article class="app-card">
-            <h2 class="mono">ДЫХАНИЕ ТИШИНЫ</h2>
-            <div class="app-subtitle">Биологический баланс</div>
-            <p>
-                Прямой способ выключить стрессовый режим. Визуальный ритм помогает нервной системе вспомнить состояние покоя, возвращая телу опору и ясность.
-            </p>
-            <a href="moment.html" class="btn">ПОДРОБНЕЕ</a>
-        </article>
-
-        <article class="app-card">
-            <h2 class="mono">ТОЧКА</h2>
-            <div class="app-subtitle">Контроль внимания</div>
-            <p>
-                Хватит позволять мыслям управлять вами. Практика помогает вернуть «руль» управления вниманием, чтобы вы сами решали, где находиться вашему сознанию.
-            </p>
-            <a href="tochka.html" class="btn">ПОДРОБНЕЕ</a>
-        </article>
-    </div>
-</section>
-
-
-    <section class="questions-section">
-        <h2 class="section-title mono">Как это работает на деле?</h2>
+    <div class="container">
         
-        <div class="question-pair">
-            <div class="question-text">Как перестать бесконечно накручивать себя?</div>
-            <div class="answer-text">
-                Постоянная «мыслекрутка» - это автоматизм мозга, который изматывает и сжигает ресурсы. Решение не в борьбе с мыслями, а в навыке вовремя замечать момент «отлёта» в фантазии. Инструмент «Точка» тренирует способность мгновенно возвращаться к фактам реальности.
-            </div>
-        </div>
-
-        <div class="question-pair">
-            <div class="question-text">Почему я не могу долго удерживать фокус?</div>
-            <div class="answer-text">
-                Внимание - это мышца, ослабленная цифровым шумом и фоновой тревогой. Когда фокус рассыпается, вы теряете управление своей жизнью. "Точка" - метод восстановления тонуса внимания через простую и честную фиксацию отвлечений.
-            </div>
-        </div>
-
-        <div class="question-pair">
-            <div class="question-text">Как снять напряжение, которое стало привычным?</div>
-            <div class="answer-text">
-                Когда стресс «давит на плечи», убеждения и усилия больше не работают. Нужно действовать через биологию. Управляемый ритм дыхания в «Дыхании Тишины» - это физиологический стоп-кран, который принудительно переводит организм из режима выживания в режим покоя.
-            </div>
-        </div>
-
-        <div class="question-pair">
-            <div class="question-text">Откуда берется усталость без видимых причин?</div>
-            <div class="answer-text">
-                Больше всего энергии потребляют невидимые внутренние споры и догадки о будущем. Это пустая трата сил. Остановив этот процесс, вы обнаружите колоссальный объем ресурса, который раньше просто уходил в пустоту.
-            </div>
-        </div>
-    </section>
-
-    <section class="knowledge-section">
-        <h2 class="section-title mono">База знаний</h2>
+        <section class="hero">
+            <h1 class="hero-name">evolvecode<span>.</span></h1>
+            <p class="hero-role">кое-что любопытное</p>
+        </section>
         
-        <div class="knowledge-grid">
-            <div class="knowledge-card" onclick="openModal('article1')">
-                <h3>Физиология панциря: почему тело не врёт</h3>
-                <p class="card-preview">Про дыхание, зажимы и лимбику. Почему советы «просто расслабься» не работают.</p>
-                <span class="read-more">Читать →</span>
+        <section class="projects">
+            <div class="section-label">Проекты</div>
+            
+            <a href="https://pro-tishinu.ru" class="project" target="_blank" rel="noopener">
+                <div class="project-header">
+                    <h2 class="project-name">Про Тишину</h2>
+                    <span class="project-status">● live</span>
+                </div>
+                <p class="project-desc">
+                    Бесплатные приложения для выхода из режима стресса. 
+                    Дыхательные практики с визуальным ритмом и тренажёр внимания. 
+                    Без регистрации, рекламы и сбора данных.
+                </p>
+                <div class="project-stack">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Canvas</span>
+                </div>
+                <span class="project-arrow">Открыть →</span>
+            </a>
+            
+        </section>
+        
+        <section class="about">
+            <div class="section-label">Кто это</div>
+            <div class="about-text">
+                <p>Я - Елена.</p>
+                <p>Что-то делаю для себя и для людей. Если инструмент помогает - делюсь. Если нет - выбрасываю и делаю заново.</p>
+                <p>Стек: <em>HTML, CSS, JavaScript</em>. Без фреймворков там, где они не нужны.</p>
             </div>
-
-            <div class="knowledge-card" onclick="openModal('article2')">
-                <h3>Мышца внимания: как перестать «отлетать»</h3>
-                <p class="card-preview">Почему ум крадёт внимание и как натренировать способность возвращаться.</p>
-                <span class="read-more">Читать →</span>
+        </section>
+        
+        <section class="contacts">
+            <div class="section-label">Связаться</div>
+            <div class="contact-links">
+                <a href="https://t.me/na_sh_kodila" target="_blank" rel="noopener">Telegram</a>
+                <a href="https://github.com/Elenaevolvecode" target="_blank" rel="noopener">GitHub</a>
             </div>
-
-            <div class="knowledge-card" onclick="openModal('article3')">
-                <h3>Эволюция кода: как перестать быть «перчаткой» своего стресса</h3>
-                <p class="card-preview">Два рычага для гигиены внутреннего пространства: Ритм и Внимание.</p>
-                <span class="read-more">Читать →</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="ethics">
-        <div class="ethics-features">
-            <div class="ethics-item"><span>🚫</span><p>БЕЗ РЕКЛАМЫ</p></div>
-            <div class="ethics-item"><span>🔒</span><p>БЕЗ РЕГИСТРАЦИИ</p></div>
-            <div class="ethics-item"><span>👻</span><p>БЕЗ СБОРА ДАННЫХ</p></div>
-        </div>
-    </section>
-
-    <div class="author-link">
-        <a href="https://t.me/na_sh_kodila" target="_blank">ТГ канал автора</a>
+        </section>
+        
+        <footer>
+            <p class="mono">© 2026 evolvecode</p>
+        </footer>
+        
     </div>
-
-    <footer>
-        <p class="mono">© 2025 EVOLVECODE | ВЕРНИТЕ СЕБЕ СЕБЯ</p>
-        <p style="margin-top: 10px; font-size: 0.85rem; opacity: 0.6;">
-            EVOLVECODE не собирает и не обрабатывает никакие ваши данные. 
-            <a href="privacy.html" style="color: inherit; text-decoration: underline; margin-left: 10px;">Приватность</a>
-        </p>
-    </div>
-    </footer>
-</div>
-
-<!-- Модальное окно -->
-<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
-    <div class="modal-content">
-        <button class="modal-close" onclick="closeModal()">&times;</button>
-        <h2 id="modalTitle"></h2>
-        <div class="article-text" id="modalText"></div>
-    </div>
-</div>
-
-<script>
-    // Звёзды
-    const container = document.getElementById('stars-container');
-    const starCount = 80;
-
-    for (let i = 0; i < starCount; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-        const size = Math.random() * 2 + 1 + 'px';
-        star.style.width = size;
-        star.style.height = size;
-        star.style.top = Math.random() * 100 + '%';
-        star.style.left = Math.random() * 100 + '%';
-        star.style.setProperty('--duration', Math.random() * 3 + 2 + 's');
-        star.style.animationDelay = Math.random() * 5 + 's';
-        container.appendChild(star);
-    }
-
-    // Статьи
-    const articles = {
-        article1: {
-            title: "Физиология панциря: почему тело не врёт",
-            text: `<p>Мы все в нем живем. В «панцире».</p>
-<p>Это когда плечи стремятся к ушам, челюсти сжаты так, будто ты грызешь гранит науки (или чью-то печень), а в груди поселился тугой комок, который не дает вздохнуть полной грудью. Личность называет это «стрессом» или «депрессией», но на самом деле - это наше тело, которое устало от бесконечного режима выживания.</p>
-<p>Ум в это время крутит свою привычную шарманку: «а вдруг не успею», «а что они подумают», «надо было ответить по-другому». Это ментальный шум. Он создает напряжение, напряжение создает панцирь. Замкнутый круг.</p>
-<p><strong>Почему обычные советы «просто расслабься» не работают?</strong></p>
-<p>Потому что нельзя приказать сжатой пружине расслабиться, пока на ней висит гиря. Гиря - это наш лимбический мозг, который видит опасность в каждом входящем сообщении.</p>
-<p>Чтобы выйти из этого клинча, не нужно идти к психологу и три года обсуждать детские травмы (хотя это тоже вариант). Можно сработать тоньше.</p>
-<p><strong>Через Ритм</strong></p>
-<p>Приложение «Дыхание тишины» родилось не из желания сделать «еще одну медитацию». Оболочек для медитаций и так полно. Оно родилось как технический ключ к сбросу настроек.</p>
-<p>Там используется конкретный ритм - пульсация, которая буквально заставляет ваш «панцирь» разжаться. Когда мы дышим иначе, происходит магия:</p>
-<p><strong>Ум теряет контроль.</strong> Он не может одновременно следить за сложным ритмом задержек и продолжать жевать жвачку о завтрашнем отчете.</p>
-<p><strong>Тело вспоминает, что оно живое.</strong> Через ритмичное насыщение кислородом и контролируемые паузы мы даем системе сигнал: «Эй, хищников рядом нет. Можно выдыхать».</p>
-<p><strong>В голове вдруг становится просторно.</strong> Как будто в пыльной, заваленной хламом комнате наконец-то открыли окно и впустили свежий воздух.</p>
-<p>Это не волшебная таблетка, само по себе приложение ничего за вас не сделает. Это не кнопка «счастье». Это тренажер.</p>
-<p>Если готовы уделить себе 10 минут, сесть и просто пойти вниманием за пульсирующей точкой, сквозь сопротивление, сквозь желание вскочить и побежать по делам, вы почувствуете тот самый Стык - момент, где заканчивается шум и начинается реальная, тихая, теплая тишина.</p>
-<p>В «Дыхании тишины» нет рекламы, нет голосов гуру и нет подписок. Есть только вы, ваш ритм.</p>`
-        },
-        article2: {
-            title: "Мышца внимания: как перестать «отлетать»",
-            text: `<p>Вот вы решили попить кофе и просто посидеть пять минут в тишине. И бац, через секунду вы уже не здесь. Вы уже в завтрашнем совещании, в споре с бывшим или в мучительных раздумьях о том, почему кот так странно на вас посмотрел.</p>
-<p>Наш ум крадет наше внимание так мгновенно, что мы замечаем это только спустя полчаса, когда кофе уже остыл, а мы чувствуете себя выжатым как лимон.</p>
-<p>Личность называет это «тревогой» или «стрессом», а на самом деле - это слабая мышца внимания.</p>
-<p><strong>Ум - это галлюцинация</strong></p>
-<p>Наш ум так устроен: он постоянно подсовывает нам картинки из прошлого или страшилки про будущее. Это его работа – гонять жвачку из архива памяти. Беда в том, что мы верим этим картинкам больше, чем реальности.</p>
-<p>Мы живем в галлюцинации, пока жизнь происходит где-то за окном.</p>
-<p><strong>Зачем нужна «Точка»?</strong></p>
-<p>Приложение «Точка» - честный тренажер. Как штанга, только для внимания.</p>
-<p>В чем суть: Есть черный экран и одна точка. Вы просто смотрите на неё. В какой-то момент вы неизбежно «отлетите» в мысли. В ту секунду, когда вы поймали себя на том, что вы уже не в точке, а в планах на отпуск — вы проснулись.</p>
-<p>Это и есть «Стык». Тот самый миг, когда то самое настоящее пробивается сквозь сон Личности.</p>
-<p>Многие думают: «У меня не получается медитировать, потому что я всё время отвлекаюсь».</p>
-<p>Всё у вас получается. Тренировка внимания — это не умение сидеть без мыслей. Это умение как можно быстрее замечать, что вы отвлеклись, и возвращаться. Чем чаще вы ловите этот «стык», тем сильнее становится ваша «мышца осознанности».</p>
-<p>Со временем вы начнете замечать эти отлеты не только в приложении, но и в жизни. Прямо в середине ссоры, в моменты страха или когда накрывает привычная депрессивная волна. Вы просто увидите: «О, дак я опять отлетаю». И в этот момент у вас появится выбор - лететь дальше или вернуться в реальность.</p>`
-        },
-        article3: {
-            title: "Как перестать быть жертвой своего стресса",
-            text: `<p>Мир перегружен. Мы тонем в уведомлениях, планах, тревогах и бесконечном «надо». Личность в этом хаосе чувствует себя как старый компьютер, на котором одновременно запустили сто тяжелых программ: всё виснет, греется и вот-вот сгорит.</p>
-<p>Обычный выход, который нам предлагают - это «еще больше контента»: послушай подкаст о счастье, купи курс по успеху, посмотри ролик про осознанность. Но это как пытаться потушить пожар бензином. Больше информации требует ум. Но это его иллюзии. Нужна тишина внутри, которой и боится ум.</p>
-<p><strong>Что такое «Эволюция кода»?</strong></p>
-<p>Это не про эзотерику и не про «духовный рост». Это про гигиену вашего внутреннего пространства. Как то так само собой случились два инструмента (PWA-приложения), которые работают как антивирус для ума. Они не добавляют новых мыслей, они помогают выключить лишний шум.</p>
-<p>В основе моих приложений лежат два простых рычага: <strong>Ритм и Внимание</strong>.</p>
-<p><strong>1. Дыхание тишины (Ритм)</strong><br>Когда стресс сжимает тело в «панцирь», бесполезно уговаривать себя успокоиться. Ритмичное дыхание с четким алгоритмом задержек - это физический сброс настроек. Тело расслабляется, лимбика затыкается, и вы снова можете просто БЫТЬ.</p>
-<p><strong>2. Точка (Внимание)</strong><br>Наш ум - обманщик. Он уводит нас в галлюцинации о прошлом или будущем, пока реальная жизнь проходит мимо. «Точка» - это тренажер, который учит вас замечать момент «отлета». Это тренировка той самой мышцы, которая позволяет вам оставаться в реальности, а не быть «перчаткой» в руках своих автоматических мыслей.</p>
-<p><strong>Почему это бесплатно и без регистрации?</strong></p>
-<p>Потому что «Эволюция кода» — это мой путь. Здесь нет маркетинга, сбора данных, подписок или рекламы. Тишина не должна продаваться.</p>
-<p>Я создаю эти приложения как Progressive Web Apps. Это значит, вы можете просто сохранить их на главный экран телефона, и они будут работать даже без интернета. Чистый инструмент, который всегда под рукой, когда мир вокруг начинает слишком сильно «фонить».</p>
-<p><strong>Для кого это?</strong></p>
-<p>Для тех, кто устал от «нетаков» в своей голове. Для тех, кто хочет нащупать тот самый Стык - место, где заканчивается шум Личности и начинается тишина присутствия.</p>
-<p>Жизнь не станет идеальной. Но здесь есть инструменты, чтобы можно было пройти сквозь любой шторм, не теряя себя.</p>
-<p><strong>Твой код может эволюционировать. Но начать придется с тишины внутри.</strong></p>`
-        }
-    };
-
-    // Функции модального окна
-    function openModal(articleId) {
-        const article = articles[articleId];
-        document.getElementById('modalTitle').textContent = article.title;
-        document.getElementById('modalText').innerHTML = article.text;
-        document.getElementById('modalOverlay').classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal() {
-        document.getElementById('modalOverlay').classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    function closeModalOutside(event) {
-        if (event.target === document.getElementById('modalOverlay')) {
-            closeModal();
-        }
-    }
-
-    // Закрытие по Escape
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape') {
-            closeModal();
-        }
-    });
-</script>
-
 </body>
 </html>
+
