@@ -28,7 +28,6 @@
     "url": "https://evolvecode.ru",
     "jobTitle": "Веб-разработчик",
     "sameAs": [
-        "https://t.me/na_sh_kodila",
         "https://github.com/Elenaevolvecode"
     ]
 }
@@ -67,7 +66,7 @@
         
         /* ─── Hero ─── */
         .hero {
-            padding: 60px 0 20px;
+            padding: 30px 0 10px;
         }
         
         .hero-name {
@@ -120,20 +119,47 @@
         }
         
         .project {
-            display: block;
+            display: flex;
+            gap: 24px;
+            align-items: stretch;
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 35px;
+            padding: 0;
             margin-bottom: 20px;
             text-decoration: none;
             transition: all 0.3s ease;
+            overflow: hidden;
         }
         
         .project:hover {
             border-color: rgba(192, 132, 252, 0.3);
             transform: translateY(-3px);
             background: rgba(255, 255, 255, 0.05);
+        }
+
+        .project-img {
+            width: 180px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        .project-img img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+
+        .project-body {
+            flex: 1;
+            padding: 24px 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         .project-header {
@@ -247,9 +273,12 @@
         
         /* ─── Mobile ─── */
         @media (max-width: 768px) {
-            .hero { padding: 80px 0 30px; }
+            .hero { padding: 60px 0 20px; }
             .hero-name { font-size: 1.7rem; }
-            .project { padding: 25px; }
+            .project { flex-direction: column; }
+            .project-img { width: 100%; padding: 20px 40px; }
+            .project-img img { max-height: 230px; width: auto; margin: 0 auto; }
+            .project-body { padding: 20px; }
             .project-header { flex-direction: column; }
         }
     </style>
@@ -267,22 +296,47 @@
             <div class="section-label">Проекты</div>
             
             <a href="https://pro-tishinu.ru" class="project" target="_blank" rel="noopener">
-                <div class="project-header">
-                    <h2 class="project-name">Про Тишину</h2>
-                    <span class="project-status">● live</span>
+                <div class="project-img"><img src="assets/pro-tishinu.png" alt="Про Тишину"></div>
+                <div class="project-body">
+                    <div class="project-header">
+                        <h2 class="project-name">Про Тишину</h2>
+                        <span class="project-status">● live</span>
+                    </div>
+                    <p class="project-desc">
+                        Бесплатные приложения для выхода из режима стресса. 
+                        Дыхательные практики с визуальным ритмом и тренажёр внимания. 
+                        Без регистрации, рекламы и сбора данных.
+                    </p>
+                    <div class="project-stack">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Canvas</span>
+                    </div>
+                    <span class="project-arrow">Открыть →</span>
                 </div>
-                <p class="project-desc">
-                    Бесплатные приложения для выхода из режима стресса. 
-                    Дыхательные практики с визуальным ритмом и тренажёр внимания. 
-                    Без регистрации, рекламы и сбора данных.
-                </p>
-                <div class="project-stack">
-                    <span class="tag">HTML</span>
-                    <span class="tag">CSS</span>
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">Canvas</span>
+            </a>
+            
+            <a href="https://parolschik.ru" class="project" target="_blank" rel="noopener">
+                <div class="project-img"><img src="assets/parolschik.png" alt="Парольщик"></div>
+                <div class="project-body">
+                    <div class="project-header">
+                        <h2 class="project-name">Парольщик</h2>
+                        <span class="project-status">● live</span>
+                    </div>
+                    <p class="project-desc">
+                        Офлайн менеджер паролей для Android. 
+                        Шифрование AES-256, вход по отпечатку или PIN. 
+                        Без облака, без подписок, без рекламы.
+                    </p>
+                    <div class="project-stack">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Capacitor</span>
+                        <span class="tag">Android</span>
+                        <span class="tag">AES-256</span>
+                    </div>
+                    <span class="project-arrow">Открыть →</span>
                 </div>
-                <span class="project-arrow">Открыть →</span>
             </a>
             
         </section>
@@ -291,24 +345,23 @@
             <div class="section-label">Кто это</div>
             <div class="about-text">
                 <p>Я - Елена.</p>
-                <p>Что-то делаю для себя и для людей. Если инструмент помогает - делюсь. Если нет - выбрасываю и делаю заново.</p>
-                <p>Стек: <em>HTML, CSS, JavaScript</em>. Без фреймворков там, где они не нужны.</p>
-            </div>
+                <p>Что-то делаю для себя и для людей.</p>
+                </div>
         </section>
         
         <section class="contacts">
             <div class="section-label">Связаться</div>
             <div class="contact-links">
-                <a href="https://t.me/na_sh_kodila" target="_blank" rel="noopener">Telegram</a>
+                <a href="mailto:hello@evolvecode.ru">hello@evolvecode.ru</a>
                 <a href="https://github.com/Elenaevolvecode" target="_blank" rel="noopener">GitHub</a>
             </div>
         </section>
         
         <footer>
             <p class="mono">© 2026 evolvecode</p>
+            <p style="margin-top:8px;"><a href="privacy.html" style="color:var(--text-dim); text-decoration:none; font-size:0.8rem;">Политика приватности</a></p>
         </footer>
         
     </div>
 </body>
 </html>
-
